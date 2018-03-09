@@ -27,19 +27,19 @@ color& operator/=(color& lhs, float rhs)
 { float inv = 1.f / rhs; return lhs *= inv; }
 
 color operator+(const color& lhs, const color& rhs)
-{ return Color(lhs.r + rhs.r, lhs.b + rhs.b, lhs.g + rhs.g); }
+{ return Color(lhs.r + rhs.r, lhs.g + rhs.g, lhs.b + rhs.b); }
 
 color operator*(const color& lhs, const color& rhs)
-{ return Color(lhs.r * rhs.r, lhs.b * rhs.b, lhs.g * rhs.g); }
+{ return Color(lhs.r * rhs.r, lhs.g * rhs.g, lhs.b * rhs.b); }
 
 color operator*(const color& lhs, float rhs)
-{ return Color(lhs.r * rhs, lhs.b * rhs, lhs.g * rhs); }
+{ return Color(lhs.r * rhs, lhs.g * rhs, lhs.b * rhs); }
 
 color operator*(float lhs, const color& rhs)
 { return Color(lhs * rhs.r, lhs * rhs.g, lhs * rhs.b); }
 
 color operator/(const color& lhs, float rhs)
-{ return Color(lhs.r / rhs, lhs.g / rhs, lhs.g / rhs); }
+{ return Color(lhs.r / rhs, lhs.g / rhs, lhs.b / rhs); }
 
 color Gamma(const color& c, float g) {
     float inv = 1.f / g;
