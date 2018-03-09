@@ -54,8 +54,13 @@ rgb_color RGBColor(unsigned char a)
 rgb_color RGBColor(unsigned char r, unsigned char g, unsigned char b)
 { return rgb_color{r, g, b, 255}; }
 
-rgb_color RGBColor(const color& c)
-{ return RGBColor(c.r, c.g, c.b); }
+rgb_color RGBColor(const color& c) {
+    return RGBColor(
+        std::clamp(int(255.99f * c.r), 0, 255),
+        std::clamp(int(255.99f * c.g), 0, 255),
+        std::clamp(int(255.99f * c.b), 0, 255)
+    );
+}
 
 // Constants
 static const color black   = Color(0.f, 0.f, 0.f);
