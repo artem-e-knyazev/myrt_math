@@ -1,4 +1,4 @@
-#include "math/vec4.hpp"
+#include "myrt-math/vec4.hpp"
 
 void add_vec4_scenarios() {
     TESTER->add_test("vector.unary.plus", []{
