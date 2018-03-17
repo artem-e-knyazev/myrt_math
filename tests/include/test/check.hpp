@@ -2,7 +2,7 @@
 #define MYRT_TEST_CHECK
 
 #include <cmath>
-#include "math/storage.hpp"
+#include "myrt-math/storage.hpp"
 
 bool check_eq(unsigned char lhs, unsigned char rhs) {
     return lhs == rhs;
