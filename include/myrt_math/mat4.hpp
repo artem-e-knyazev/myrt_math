@@ -21,7 +21,6 @@ mat4 Translate(const vec4& t)
               t.x, t.y, t.z, 1.f}; }
 
 // Binary (matrix and matrix)
-
 mat4 operator*(const mat4& a, const mat4& b) {
     mat4 m;
     
@@ -49,16 +48,22 @@ mat4 operator*(const mat4& a, const mat4& b) {
 }
 
 // Binary (matrix and vector)
-
-vec4 TransformAffine(const mat4& m, const vec4& v)
+vec4 TransformOrtVec(const mat4& m, const vec4& v)
 { return vec4(m.px * v.x + m.qx * v.y + m.rx * v.z + m.tx,
               m.py * v.x + m.qy * v.y + m.ry * v.z + m.ty,
               m.pz * v.x + m.qz * v.y + m.rz * v.z + m.tz); }
 
-vec4 TransformDirection(const mat4& m, const vec4& v)
+vec4 TransformOrtDir(const mat4& m, const vec4& v)
 { return vec4(m.px * v.x + m.qx * v.y + m.rx * v.z,
               m.py * v.x + m.qy * v.y + m.ry * v.z,
               m.pz * v.x + m.qz * v.y + m.rz * v.z,
+              0.f); }
+
+// todo: check if normals are correctly transformed by dot-product!
+vec4 TransformOrtNrm(const mat4& m, const vec4& v)
+{ return vec4(m.px * v.x + m.py * v.y + m.pz * v.z,
+              m.qx * v.x + m.qy * v.y + m.qz * v.z,
+              m.rx * v.x + m.ry * v.y + m.rz * v.z,
               0.f); }
 
 vec4 Transform(const mat4& m, const vec4& v)
@@ -68,7 +73,6 @@ vec4 Transform(const mat4& m, const vec4& v)
               m.pw * v.x + m.qw * v.y + m.rw * v.z + m.tw * v.w); }
 
 // Additional
-
 void Transpose(mat4& dest, const mat4& src) {
     dest.px = src.px;
     dest.py = src.qx;
@@ -91,7 +95,7 @@ void Transpose(mat4& dest, const mat4& src) {
     dest.tw = src.tw;
 }
 
-void TransposeAffine(mat4& dest, const mat4& src) {
+void TransposeOrtho(mat4& dest, const mat4& src) {
     dest.px = src.px;
     dest.py = src.qx;
     dest.pz = src.rx;
@@ -114,12 +118,12 @@ mat4 Transpose(const mat4& m) {
     return res;
 }
 
-void InverseAffine(mat4& dest, const mat4& src) {
-    TransposeAffine(dest, src);
+void InverseOrtho(mat4& dest, const mat4& src) {
+    TransposeOrtho(dest, src);
     dest.t = -src.t;
 }
 
-mat4 InverseAffine(const mat4& m) {
+mat4 InverseOrtho(const mat4& m) {
     mat4 res;
     InverseAffine(res, m);
     return res;
