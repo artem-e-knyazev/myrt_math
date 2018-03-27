@@ -26,7 +26,7 @@ Note, that currently the library exposes types into a global namespace. Will int
 
 ## Testing
 
-```
+```cpp
 // add test
 TESTER->add_test("vector.unary.plus", []{
     assert_eq(+Vec4(1.f, 2.f, 3.f), Vec4(1.f, 2.f, 3.f));
