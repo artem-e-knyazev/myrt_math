@@ -15,7 +15,7 @@ A simple math library used by [the Myrt raytracer.](https://github.com/artemekny
 ```
 Or
 ```shell
-> git submodule add https://github.com/artemeknyazev/myrt-math.git ./submodules
+> git submodule add https://github.com/artemeknyazev/myrt-math.git ./submodules/myrt-math
 ```
 
 ## Usage
