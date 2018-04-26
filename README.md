@@ -1,43 +1,44 @@
 # Myrt Math
 
-Simple math library used by the Myrt raytracer.
+A simple math library used by [the Myrt raytracer.](https://github.com/artemeknyazev/myrt)
+
+## Contents
+
+* [Installation](https://github.com/artemeknyazev/myrt-math#installation)
+* [Usage](https://github.com/artemeknyazev/myrt-math#usage)
+* [Testing](https://github.com/artemeknyazev/myrt-math#testing)
 
 ## Installation
 
-```
+```shell
 > mkdir submodules && cd submodules && git clone https://github.com/artemeknyazev/myrt-math.git
 ```
 Or
-```
+```shell
 > git submodule add https://github.com/artemeknyazev/myrt-math.git ./submodules
 ```
 
 ## Usage
 
+Add `myrt-math` to include path
+
+```shell
+> g++ -I<submodules path>/myrt-math/include <other options>
 ```
-> g++ -I submodules/myrt-math/include <other options>
-```
-and
+and include header files:
 ```cpp
+#include "myrt-math/color.hpp"
 #include "myrt-math/vec4.hpp"
+#include "myrt-math/ray4.hpp"
+#include "myrt-math/mat4.hpp"
 ```
 
 Note, that currently the library exposes types into a global namespace. Will introduce a separate namespace later.
 
 ## Testing
 
-```cpp
-// add test
-TESTER->add_test("vector.unary.plus", []{
-    assert_eq(+Vec4(1.f, 2.f, 3.f), Vec4(1.f, 2.f, 3.f));
-    assert_eq(+Vec4(-1.f, -2.f, -3.f), Vec4(-1.f, -2.f, -3.f));
-});
-// run it
-TESTER->run();
-```
-then
-```
-> make test
+```shell
+> make run
 ```
 
-A simpliest testing "framework". Note, that `TESTER` is a macros, and so is `assert_eq`. The former abstracts `Singleton::getInstance()`, the latter calls an `assert_eq_impl` implementation function with a file name and a line as added arguments. The function calls `check_eq` function overloaded for each type defined in the library.
+Myrt Math uses a [`googletest`](https://github.com/google/googletest) testing framework.
