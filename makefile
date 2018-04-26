@@ -1,4 +1,2 @@
-test:
-	$(MAKE) -C ./tests/ run
-
-
+%:
+	@$(MAKE) -s -C ./tests/ $@

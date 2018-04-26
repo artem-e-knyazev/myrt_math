@@ -1,7 +1,7 @@
 #ifndef MYRT_MATH_STORAGE
 #define MYRT_MATH_STORAGE
 
-#include <iosfwd>
+#include <iostream>
 
 struct vec4 {
     float x, y, z, w;

@@ -1,6 +1,7 @@
 #ifndef MYRT_MATH_VEC4
 #define MYRT_MATH_VEC4
 
+#include <cmath>
 #include "storage.hpp"
 
 // Ctors
